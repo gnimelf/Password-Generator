@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-passwordLength = 0;
+var passwordLength = 0;
+var passwordType = [];
+
 
 // Add number array
 var number = [0,1,2,3,4,5,6,7,9];
@@ -16,14 +18,30 @@ function getlength(){
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter the length of the password");
   }
-  return passwordLength;
+  return;
+}
+
+function useLowerCase(){
+  var userlower = prompt("Use lowercase charaters? y for Yes or n for No");
+  while ((userlower != "n") && (userlower != "y")) {
+    userlower = prompt("Use lowercase charaters? y for Yes or n for No");
+  }
+  if (userlower === "y") {
+    passwordType.push("lower");
+    console.log(passwordType);  // Testing
+  }
 }
 
 
 // create generatePassword function
 function generatePassword() {
+  // get password length
   getlength();
+
+  useLowerCase();
+
     // for loop to count length
+
       // for loop to randomly choose a char type
          // for loop to choose a char from the array
          // add chosen char to password array
