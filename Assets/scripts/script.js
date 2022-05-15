@@ -8,7 +8,7 @@ var password = [];
 var number = [0, 1, 2, 3, 4, 5, 6, 7, 9];
 
 // Add alphabet array
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Add special char array
 var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":"];
@@ -28,19 +28,20 @@ function useCase(caseType) {
   while ((toUse != "n") && (toUse != "y")) {
     toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
   }
-  if (caseType === "lowercase" && toUse === "y") {  
-    charsToUse.push(caseType);
-    console.log(charsToUse);  // Testing
+  if (caseType === "lowercase" && toUse === "y") {
+    charsTypesToUse.push(caseType);
+    console.log(charsTypesToUse);  // Testing
   } else if (caseType === "uppercase" && toUse === "y") {
-    charsToUse.push(caseType);
-    console.log(charsToUse);  // Testing
+    charsTypesToUse.push(caseType);
+    console.log(charsTypesToUse);  // Testing
   } else if (caseType === "numbers" && toUse === "y") {
-    charsToUse.push(caseType);
-    console.log(charsToUse);  // Testing
+    charsTypesToUse.push(caseType);
+    console.log(charsTypesToUse);  // Testing
   } else if (caseType === "special" && toUse === "y") {
-    charsToUse.push(caseType);
-    console.log(charsToUse);  // Testing
+    charsTypesToUse.push(caseType);
+    console.log(charsTypesToUse);  // Testing
   }
+  return;
 }
 
 // create generatePassword function
@@ -53,24 +54,36 @@ function generatePassword() {
   useCase("special");
 
   // for loop - loop passwordLength times
-  for (i=0; i < passwordLength; i++) {
-    var randomTypeIndex = Math.floor(Math.random()*charsTypesToUse.length)
+  for (i = 0; i < passwordLength; i++) {
+    var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length)
     var randomType = charsTypesToUse[randomTypeIndex];
+
+    // Grab a random lowercase letter
     if (randomType === "lowercase") {
-      var randomLowerIndex = Math.floor(Math.random()*)
+      var randomIndex = Math.floor(Math.random() * alphabet.length)
+      password.push(alphabet[randomIndex])
     }
-    // grab random type from charsTypesToUse
+    // Grab a random uppercase letter
+    if (randomType === "uppercase") {
+      var randomIndex = Math.floor(Math.random() * alphabet.length)
+      password.push(alphabet[randomIndex].toUpperCase())
+    }
+    // Grab a random number
+    if (randomType === "number") {
+      var randomIndex = Math.floor(Math.random() * number.length)
+      password.push(number[randomIndex])
+    }
+    // Grab a random special char
+    if (randomType === "special") {
+      var randomIndex = Math.floor(Math.random() * special.length)
+      password.push(special[randomIndex])
+    }
     
   }
+  console.log(password)
 
-  // for loop to randomly choose a char type
-  // for loop to choose a char from the array
-  // add chosen char to password array
-
-  return passwordLength; //Testing
+  return password.toString();
 }
-
-
 
 // Write password to the #password input
 function writePassword() {
@@ -78,7 +91,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  return;
 }
 
 // Add event listener to generate button
