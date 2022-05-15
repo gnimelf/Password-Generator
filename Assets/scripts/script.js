@@ -1,8 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordLength = 0;
-var passwordType = [];
-
+var charsTypesToUse = [];
+var password = [];
 
 // Add number array
 var number = [0, 1, 2, 3, 4, 5, 6, 7, 9];
@@ -24,16 +24,22 @@ function getlength() {
 // function to chose weather or not to use lower case
 function useCase(caseType) {
 
-  var useCase = prompt("Use " + caseType + "case charaters? y for Yes or n for No");
-  while ((useCase != "n") && (useCase != "y")) {
-    userlower = prompt("Use " + caseType + "case charaters? y for Yes or n for No");
+  var toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
+  while ((toUse != "n") && (toUse != "y")) {
+    toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
   }
-  if (caseType === "lower" && useCase === "y") {
-    passwordType.push("lower");
-    console.log(passwordType);  // Testing
-  } else if (caseType === "upper" && useCase === "y") {
-    passwordType.push("upper");
-    console.log(passwordType);  // Testing
+  if (caseType === "lowercase" && toUse === "y") {  
+    charsToUse.push(caseType);
+    console.log(charsToUse);  // Testing
+  } else if (caseType === "uppercase" && toUse === "y") {
+    charsToUse.push(caseType);
+    console.log(charsToUse);  // Testing
+  } else if (caseType === "numbers" && toUse === "y") {
+    charsToUse.push(caseType);
+    console.log(charsToUse);  // Testing
+  } else if (caseType === "special" && toUse === "y") {
+    charsToUse.push(caseType);
+    console.log(charsToUse);  // Testing
   }
 }
 
@@ -41,11 +47,21 @@ function useCase(caseType) {
 function generatePassword() {
   // get password length
   getlength();
+  useCase("lowercase");
+  useCase("uppercase");
+  useCase("number");
+  useCase("special");
 
-  useCase("lower");
-  useCase("upper");
-
-  // for loop to count length
+  // for loop - loop passwordLength times
+  for (i=0; i < passwordLength; i++) {
+    var randomTypeIndex = Math.floor(Math.random()*charsTypesToUse.length)
+    var randomType = charsTypesToUse[randomTypeIndex];
+    if (randomType === "lowercase") {
+      var randomLowerIndex = Math.floor(Math.random()*)
+    }
+    // grab random type from charsTypesToUse
+    
+  }
 
   // for loop to randomly choose a char type
   // for loop to choose a char from the array
