@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+passwordLength = 0;
 
 // Add number array
 var number = [0,1,2,3,4,5,6,7,9];
@@ -11,6 +12,12 @@ var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^","~", "*", "?", ":"];
 
 // function to get passlength
+function getlength(){
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("Enter the length of the password");
+  }
+}
+
 
 // create generatePassword function
   // for loop to count length
