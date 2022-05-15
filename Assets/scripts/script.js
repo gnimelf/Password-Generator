@@ -16,14 +16,21 @@ function getlength(){
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter the length of the password");
   }
+  return passwordLength;
 }
 
 
 // create generatePassword function
-  // for loop to count length
+function generatePassword() {
+  getlength();
+    // for loop to count length
       // for loop to randomly choose a char type
          // for loop to choose a char from the array
          // add chosen char to password array
+
+  return passwordLength; //Testing
+}
+
 
 
 // Write password to the #password input
