@@ -13,33 +13,48 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 // Add special char array
 var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":", '"', "+", ",", "'", "-", ".", "/", ";", "<", "=", ">", "[", "\\", "]", "_", "`", "{", "|", "}" ]; 
 
+cancel:
+
+
 // function to get passlength
 function getlength() {
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter the length of the password");
+    if (passwordLength === null) {
+      break;
+    }
   }
   return;
 }
 
 // function to chose weather or not to use lower case
-function useCase(caseType) {
+function typeToUse(caseType) {
+
+  if (passwordLength === null) {
+    return;
+  }
 
   var toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
+  if (toUse === null) {
+    return;
+  }
+  
   while ((toUse != "n") && (toUse != "y")) {
     toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
   }
-  if (caseType === "lowercase" && toUse === "y") {
+
+   if (caseType === "lowercase" && toUse === "y") {
     charsTypesToUse.push(caseType);
-    console.log(charsTypesToUse);  // Testing
+
   } else if (caseType === "uppercase" && toUse === "y") {
     charsTypesToUse.push(caseType);
-    console.log(charsTypesToUse);  // Testing
+
   } else if (caseType === "numbers" && toUse === "y") {
     charsTypesToUse.push(caseType);
-    console.log(charsTypesToUse);  // Testing
+
   } else if (caseType === "special" && toUse === "y") {
     charsTypesToUse.push(caseType);
-    console.log(charsTypesToUse);  // Testing
+
   }
   return;
 }
@@ -55,11 +70,10 @@ function generatePassword() {
 
   // get password length
   getlength();
-  useCase("lowercase");
-  useCase("uppercase");
-  useCase("number");
-  useCase("special");
-
+  typeToUse("lowercase");
+  typeToUse("uppercase");
+  typeToUse("number");
+  typeToUse("special");
   
   // for loop - loop passwordLength times
   for (i = 0; i < passwordLength; i++) {
@@ -89,9 +103,7 @@ function generatePassword() {
       var randomIndex = Math.floor(Math.random() * special.length);
       password.push(special[randomIndex]);
     }
-    
   }
-
   return password.join("");
 }
 
@@ -106,3 +118,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
