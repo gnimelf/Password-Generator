@@ -11,7 +11,7 @@ var number = [0, 1, 2, 3, 4, 5, 6, 7, 9];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Add special char array
-var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":"];
+var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":", '"', "+", ",", "'", "-", ".", "/", ";", "<", "=", ">", "[", "\\", "]", "_", "`", "{", "|", "}" ]; 
 
 // function to get passlength
 function getlength() {
@@ -63,7 +63,7 @@ function generatePassword() {
   
   // for loop - loop passwordLength times
   for (i = 0; i < passwordLength; i++) {
-    var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length)
+    var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length);
     var randomType = charsTypesToUse[randomTypeIndex];
 
     // Grab a random lowercase letter
