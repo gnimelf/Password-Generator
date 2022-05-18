@@ -91,7 +91,6 @@ function generatePassword() {
     }
     
   }
-  
 
   return password.join("");
 }
