@@ -46,6 +46,13 @@ function useCase(caseType) {
 
 // create generatePassword function
 function generatePassword() {
+  // reset password
+  passwordLength = 0;
+  password = [];
+  
+  // clear password box
+  passwordField = "";
+
   // get password length
   getlength();
   useCase("lowercase");
@@ -53,6 +60,7 @@ function generatePassword() {
   useCase("number");
   useCase("special");
 
+  
   // for loop - loop passwordLength times
   for (i = 0; i < passwordLength; i++) {
     var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length)
@@ -60,29 +68,32 @@ function generatePassword() {
 
     // Grab a random lowercase letter
     if (randomType === "lowercase") {
-      var randomIndex = Math.floor(Math.random() * alphabet.length)
-      password.push(alphabet[randomIndex])
+      var randomIndex = Math.floor(Math.random() * alphabet.length);
+      password.push(alphabet[randomIndex]);
     }
+
     // Grab a random uppercase letter
     if (randomType === "uppercase") {
-      var randomIndex = Math.floor(Math.random() * alphabet.length)
-      password.push(alphabet[randomIndex].toUpperCase())
+      var randomIndex = Math.floor(Math.random() * alphabet.length);
+      password.push(alphabet[randomIndex].toUpperCase());
     }
+
     // Grab a random number
     if (randomType === "number") {
-      var randomIndex = Math.floor(Math.random() * number.length)
-      password.push(number[randomIndex])
+      var randomIndex = Math.floor(Math.random() * number.length);
+      password.push(number[randomIndex]);
     }
+
     // Grab a random special char
     if (randomType === "special") {
-      var randomIndex = Math.floor(Math.random() * special.length)
-      password.push(special[randomIndex])
+      var randomIndex = Math.floor(Math.random() * special.length);
+      password.push(special[randomIndex]);
     }
     
   }
-  console.log(password)
+  
 
-  return password.toString();
+  return password.join("");
 }
 
 // Write password to the #password input
