@@ -11,7 +11,7 @@ var number = [0, 1, 2, 3, 4, 5, 6, 7, 9];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Add special char array
-var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":", '"', "+", ",", "'", "-", ".", "/", ";", "<", "=", ">", "[", "\\", "]", "_", "`", "{", "|", "}" ]; 
+var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":", '"', "+", ",", "'", "-", ".", "/", ";", "<", "=", ">", "[", "\\", "]", "_", "`", "{", "|", "}"];
 
 // function to get passlength
 function getlength() {
@@ -27,20 +27,24 @@ function getlength() {
 // function to chose weather or not to use lower case
 function typeToUse(caseType) {
 
+  // Check if user click Cancel
   if (passwordLength === null) {
     return;
   }
 
   var toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
+
+  // Check if user click Cancel
   if (toUse === null) {
     return;
   }
 
+  // Check if value entered is valid
   while ((toUse != "n") && (toUse != "y")) {
     toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
   }
 
-   if (caseType === "lowercase" && toUse === "y") {
+  if (caseType === "lowercase" && toUse === "y") {
     charsTypesToUse.push(caseType);
 
   } else if (caseType === "uppercase" && toUse === "y") {
@@ -61,7 +65,7 @@ function generatePassword() {
   // reset password
   passwordLength = 0;
   password = [];
-  
+
   // clear password box
   passwordField = "";
 
@@ -71,7 +75,7 @@ function generatePassword() {
   typeToUse("uppercase");
   typeToUse("number");
   typeToUse("special");
-  
+
   // for loop - loop passwordLength times
   for (i = 0; i < passwordLength; i++) {
     var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length);
