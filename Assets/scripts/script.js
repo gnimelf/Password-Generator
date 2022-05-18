@@ -13,9 +13,6 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 // Add special char array
 var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", "?", ":", '"', "+", ",", "'", "-", ".", "/", ";", "<", "=", ">", "[", "\\", "]", "_", "`", "{", "|", "}" ]; 
 
-cancel:
-
-
 // function to get passlength
 function getlength() {
   while (passwordLength < 8 || passwordLength > 128) {
@@ -38,7 +35,7 @@ function typeToUse(caseType) {
   if (toUse === null) {
     return;
   }
-  
+
   while ((toUse != "n") && (toUse != "y")) {
     toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
   }
