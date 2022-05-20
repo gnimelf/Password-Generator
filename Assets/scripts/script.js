@@ -32,12 +32,15 @@ function typeToUse(caseType) {
     return;
   }
 
-  var toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
+  var toUse = 0;
+  toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
 
   // Check if user click Cancel
-  if (toUse === null) {
+  if (toUse == null) {
     return;
   }
+
+  console.log(toUse);
 
   // Check if value entered is valid
   while ((toUse != "n") && (toUse != "y")) {
