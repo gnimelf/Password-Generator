@@ -23,7 +23,6 @@ function getlength() {
   }
   return;
 }
-
 // function to chose weather or not to use lower case
 function typeToUse(caseType) {
 
@@ -36,7 +35,7 @@ function typeToUse(caseType) {
 
   // Check if user click Cancel
   if (toUse === null) {
-    return;
+    
   }
 
   // Check if value entered is valid
