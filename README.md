@@ -10,7 +10,7 @@
 
 Select the "Generate Password" button and then answer the questions in each prompt. Then voilà, a password is generated and display in the text area. Repeat the process to generate another.
 
-![pass-gen screenshot](/Assets/images/password-generator.png)
+[![pass-gen screenshot](/Assets/images/password-generator.png)](https://gnimelf.github.io/Password-Generator)
 
 ## Credits
 

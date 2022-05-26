@@ -5,7 +5,7 @@ var charsTypesToUse = [];
 var password = [];
 
 // Add number array
-var number = [0, 1, 2, 3, 4, 5, 6, 7, 9];
+var number = ['0', '1', '2', '3', '4', '5', '6', '7', '9'];
 
 // Add alphabet array
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -17,7 +17,7 @@ var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", 
 function getlength() {
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter the length of the password");
-    if (passwordLength === null) {
+    if (passwordLength === '') {
       break;
     }
   }
@@ -27,16 +27,19 @@ function getlength() {
 function typeToUse(caseType) {
 
   // Check if user click Cancel
-  if (passwordLength === null) {
+  if (passwordLength === '') {
     return;
   }
 
-  var toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
+  var toUse = 0;
+  toUse = prompt("Use " + caseType + " characters? y for Yes or n for No");
 
   // Check if user click Cancel
-  if (toUse === null) {
-    
+  if (toUse == null) {
+    return;
   }
+
+  console.log(toUse);
 
   // Check if value entered is valid
   while ((toUse != "n") && (toUse != "y")) {
@@ -49,7 +52,7 @@ function typeToUse(caseType) {
   } else if (caseType === "uppercase" && toUse === "y") {
     charsTypesToUse.push(caseType);
 
-  } else if (caseType === "numbers" && toUse === "y") {
+  } else if (caseType === "number" && toUse === "y") {
     charsTypesToUse.push(caseType);
 
   } else if (caseType === "special" && toUse === "y") {
@@ -64,6 +67,7 @@ function generatePassword() {
   // reset password
   passwordLength = 0;
   password = [];
+  charsTypesToUse = [];
 
   // clear password box
   passwordField = "";
