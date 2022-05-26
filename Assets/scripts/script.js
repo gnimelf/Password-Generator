@@ -17,7 +17,7 @@ var special = ["!", "@", "#", "$", "%", "^", "&", "(", ")", "]", "^", "~", "*", 
 function getlength() {
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter the length of the password");
-    if (passwordLength === '') {
+    if (passwordLength === null) {
       break;
     }
   }
@@ -27,8 +27,8 @@ function getlength() {
 function typeToUse(caseType) {
 
   // Check if user click Cancel
-  if (passwordLength === '') {
-    return;
+  if (passwordLength === null) {
+    return null;
   }
 
   var toUse = 0;
@@ -36,7 +36,7 @@ function typeToUse(caseType) {
 
   // Check if user click Cancel
   if (toUse == null) {
-    return;
+    return null;
   }
 
   console.log(toUse);
@@ -74,10 +74,22 @@ function generatePassword() {
 
   // get password length
   getlength();
-  typeToUse("lowercase");
+  var value = typeToUse("lowercase");
+  if (value === null) {
+    return;
+  }
   typeToUse("uppercase");
+  if (value === null) {
+    return;
+  }
   typeToUse("number");
+  if (value === null) {
+    return;
+  }
   typeToUse("special");
+  if (value === null) {
+    return;
+  }
 
   // for loop - loop passwordLength times
   for (i = 0; i < passwordLength; i++) {
