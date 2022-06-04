@@ -3,6 +3,7 @@ var generateBtn = document.querySelector("#generate");
 var passwordLength = 0;
 var charsTypesToUse = [];
 var password = [];
+var lastType = "";
 
 // Add number array
 var number = ['0', '1', '2', '3', '4', '5', '6', '7', '9'];
@@ -68,6 +69,7 @@ function generatePassword() {
   passwordLength = 0;
   password = [];
   charsTypesToUse = [];
+  var lastType = "";
 
   // clear password box
   passwordField = "";
@@ -78,15 +80,15 @@ function generatePassword() {
   if (value === null) {
     return;
   }
-  typeToUse("uppercase");
+  value = typeToUse("uppercase");
   if (value === null) {
     return;
   }
-  typeToUse("number");
+  value = typeToUse("number");
   if (value === null) {
     return;
   }
-  typeToUse("special");
+  value = typeToUse("special");
   if (value === null) {
     return;
   }
@@ -96,30 +98,38 @@ function generatePassword() {
     var randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length);
     var randomType = charsTypesToUse[randomTypeIndex];
 
+    while (randomType === lastType && charsTypesToUse > 1) {
+      randomTypeIndex = Math.floor(Math.random() * charsTypesToUse.length);
+      randomType = charsTypesToUse[randomTypeIndex];
+    }
+    
+    console.log(randomType);
+
     // Grab a random lowercase letter
-    if (randomType === "lowercase") {
+    if (randomType === "lowercase"  ) {
       var randomIndex = Math.floor(Math.random() * alphabet.length);
       password.push(alphabet[randomIndex]);
     }
 
     // Grab a random uppercase letter
-    if (randomType === "uppercase") {
+    if (randomType === "uppercase" ) {
       var randomIndex = Math.floor(Math.random() * alphabet.length);
       password.push(alphabet[randomIndex].toUpperCase());
     }
 
     // Grab a random number
-    if (randomType === "number") {
+    if (randomType === "number" ) {
       var randomIndex = Math.floor(Math.random() * number.length);
       password.push(number[randomIndex]);
     }
 
     // Grab a random special char
-    if (randomType === "special") {
+    if (randomType === "special" ) {
       var randomIndex = Math.floor(Math.random() * special.length);
       password.push(special[randomIndex]);
     }
   }
+  lastType = randomType;
   return password.join("");
 }
 
